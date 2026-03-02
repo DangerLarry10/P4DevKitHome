@@ -1,0 +1,29 @@
+## IDF Component Manager Manifest File
+dependencies:
+  ## Required IDF version
+  idf: ">=5.3"
+
+  # Waveshare BSP (replaces espressif/esp32_p4_function_ev_board)
+  waveshare/esp32_p4_platform: "^1.0.6"
+
+  # Core framework
+  brookesia_core:
+    version: "*"
+    override_path: "../../../../core/brookesia_core"
+
+  # Apps (EXCLUDED: 2048, POS, AI_Profile, Squareline Demo)
+  brookesia_app_calculator:
+    version: "*"
+    override_path: "../../../../apps/brookesia_app_calculator"
+
+  brookesia_app_settings:
+    version: "*"
+    override_path: "../../../../apps/brookesia_app_settings"
+
+  brookesia_app_timer:
+    version: "*"
+    override_path: "../../../../apps/brookesia_app_timer"
+
+  brookesia_app_usbd_ncm:
+    version: "*"
+    override_path: "../../../../apps/brookesia_app_usbd_ncm"
