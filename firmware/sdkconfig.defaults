@@ -1,0 +1,53 @@
+# P4DevKitHome - Default configuration for ESP32-P4 with Waveshare 10.1" display
+#
+# These settings are applied ONCE when you first run `idf.py set-target esp32p4`.
+# After that, changes go into `sdkconfig` (which is gitignored).
+# To reset: delete sdkconfig and build/ folder, then re-run set-target.
+
+# === Target & Flash ===
+CONFIG_IDF_TARGET="esp32p4"
+CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+
+# === Compiler ===
+# "Performance" optimization - trades code size for speed. Good for GUI apps.
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+
+# === PSRAM (32MB on P4 DevKit) ===
+# The ESP32-P4 has external PSRAM for large buffers (framebuffers, LVGL objects).
+# 200MHz is the fastest speed setting - critical for smooth GUI rendering.
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_SPEED_200M=y
+CONFIG_SPIRAM_XIP_FROM_PSRAM=y
+
+# === Cache ===
+# Larger L2 cache = fewer cache misses when reading from PSRAM.
+# 256KB with 128B lines is optimal for display-heavy workloads.
+CONFIG_CACHE_L2_CACHE_256KB=y
+CONFIG_CACHE_L2_CACHE_LINE_128B=y
+
+# === FreeRTOS ===
+# 1000 Hz tick rate = 1ms resolution for LVGL timers and animations.
+CONFIG_FREERTOS_HZ=1000
+
+# === LVGL Fonts ===
+# We enable a range of Montserrat sizes for our UI.
+# Each enabled font adds ~20-40KB to flash, but we have 16MB so that's fine.
+CONFIG_LV_FONT_MONTSERRAT_14=y
+CONFIG_LV_FONT_MONTSERRAT_16=y
+CONFIG_LV_FONT_MONTSERRAT_20=y
+CONFIG_LV_FONT_MONTSERRAT_24=y
+CONFIG_LV_FONT_MONTSERRAT_28=y
+
+# === LVGL Misc ===
+CONFIG_LV_USE_CLIB_MALLOC=y
+CONFIG_LV_USE_CLIB_STRING=y
+CONFIG_LV_USE_CLIB_SPRINTF=y
+CONFIG_LV_USE_LOG=y
+CONFIG_LV_LOG_PRINTF=y
+CONFIG_LV_BUILD_EXAMPLES=n
+
+# === Experimental ===
+# Required for some ESP32-P4 MIPI-DSI features
+CONFIG_IDF_EXPERIMENTAL_FEATURES=y

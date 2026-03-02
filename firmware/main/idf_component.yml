@@ -1,0 +1,16 @@
+## IDF Component Manager Manifest File
+## This tells ESP-IDF which external components to download and link.
+## When you run `idf.py build`, it fetches these from the ESP Component Registry.
+dependencies:
+  ## Minimum ESP-IDF version required
+  idf: ">=5.5"
+
+  ## Waveshare BSP - Board Support Package
+  ## This handles ALL the hardware init for us: MIPI-DSI display, touch controller,
+  ## backlight, and provides constants like BSP_LCD_H_RES / BSP_LCD_V_RES.
+  ## The BSP internally depends on esp_lvgl_port, so we get LVGL integration for free.
+  waveshare/esp32_p4_platform: "^1.0.6"
+
+  ## LVGL v9 - the GUI library
+  ## The ~9.2 means "any 9.2.x version" (compatible updates only).
+  lvgl/lvgl: "~9.2"

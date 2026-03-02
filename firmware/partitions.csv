@@ -1,0 +1,10 @@
+# Custom partition table for 16MB flash
+# ---
+# We give the app partition a large chunk (~14MB) since LVGL + our code
+# can get big. NVS is for key-value storage (WiFi creds, settings later).
+# phy_init is required for WiFi/BT radio calibration data.
+#
+# Name,          Type, SubType, Offset,  Size,     Flags
+nvs,             data, nvs,     ,        0x6000,
+phy_init,        data, phy,     ,        0x1000,
+factory,         app,  factory, ,        14M,
