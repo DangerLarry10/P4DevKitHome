@@ -1,0 +1,30 @@
+# ESP-IDF build artifacts
+build/
+sdkconfig.old
+sdkconfig
+
+# Managed component dependencies (downloaded by idf.py)
+managed_components/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Claude Code
+.claude/
+
+# Compilation databases
+compile_commands.json
