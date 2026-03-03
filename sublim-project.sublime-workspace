@@ -1,0 +1,288 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"termin",
+				"Terminus: Open PowerShell in Tab"
+			],
+			[
+				"Terminus: Open",
+				"Terminus: Open Git Bash in Tab"
+			],
+			[
+				"",
+				"Bookmarks: Clear All"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"ter",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"terminus",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"Package C",
+				"Package Control: Install Package"
+			],
+			[
+				"package Control In",
+				"Package Control: Install Package"
+			],
+			[
+				"PackageConr",
+				"Package Control: Add Repository"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Install Pack",
+				"Install Package Control"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #include \"…\""
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"window.set_layout({\n      \"cols\": [0.0, 0.5, 1.0],\n      \"rows\": [0.0, 0.7, 1.0],\n      \"cells\": [\n          [0, 0, 1, 1],  # Group 0: top-left (editor)\n          [1, 0, 2, 2],  # Group 1: right full height (Claude)\n          [0, 1, 1, 2]   # Group 2: bottom-left (your terminal)\n      ]\n  })\n",
+			" window.set_layout({\n      \"cols\": [0.0, 0.5, 1.0],\n      \"rows\": [0.0, 0.7, 1.0],\n      \"cells\": [\n          [0, 0, 1, 1],  # Group 0: top-left (editor)\n          [1, 0, 2, 2],  # Group 1: right full height (Claude)\n          [0, 1, 1, 2]   # Group 2: bottom-left (your terminal)\n      ]\n  })\n",
+			"pio run -t clean"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/PCMan/Projects/P4DevKitHome"
+	],
+	"file_history":
+	[
+		"/C/Users/PCMan/Projects/Windows/LearnSquareLine4inCYD/step2-lvgl-basic/src/main.cpp",
+		"/C/Users/PCMan/Projects/SmartHome/ESP-HOME/devices/CYD-4in/cyd-4in.yaml",
+		"/C/Users/PCMan/Projects/SmartHome/ESP-HOME/devices/C3-RCWL-FirstTry/c3-rcwl-firsttry.yaml",
+		"/C/Users/PCMan/Projects/SmartHome/.gitignore",
+		"/C/Users/PCMan/Projects/SmartHome/ESP-HOME/devices/CYD-4in/secrets.yaml",
+		"/C/Users/PCMan/Projects/SmartHome/HomeAssistant/templates/secrets.example.yaml",
+		"/C/Users/PCMan/Projects/SmartHome/README.md",
+		"/C/Users/PCMan/Projects/SmartHome/.gitattributes",
+		"/C/Users/PCMan/Projects/SmartHome/docs/onboarding.md",
+		"/C/Users/PCMan/Projects/Windows/ESP32_WeatherStation/sensor/src/main.cpp",
+		"/C/Users/PCMan/Documents/Documentation/LVGL/CLAUDE_README.txt",
+		"/C/Users/PCMan/Downloads/LVGL-8.4.pdf",
+		"/C/Users/PCMan/Projects/Windows/LearnSquareLine4inCYD/step1-display-test/include/LGFX_E32R40T.hpp",
+		"/C/Users/PCMan/Projects/Windows/LearnSquareLine4inCYD/step1-display-test/src/main.cpp",
+		"/C/Program Files/Notepad++/plugins/Config/nppPluginList.dll",
+		"/F/brucePins.conf",
+		"/F/bruce.conf",
+		"/F/config.conf",
+		"/C/Users/PCMan/Downloads/esp32_marauder_v1_10_1_20260127_cyd_3_5_inch (1).bin",
+		"/C/Users/PCMan/Projects/Windows/CustomIDE/CustomAgents/SummarizeProjState",
+		"/C/Users/PCMan/AppData/Roaming/Sublime Text/Packages/User/Terminus.sublime-settings",
+		"/C/Users/PCMan/AppData/Roaming/Sublime Text/Packages/Terminus/Terminus.sublime-settings",
+		"/C/Users/PCMan/Projects/CustomIDE/Terminus-master/Terminus-master/Terminus View.sublime-settings",
+		"/C/Users/PCMan/Projects/SecurityCamera-Server/docs/README.txt",
+		"/C/Users/PCMan/Projects/CYDESP32E_4inch/docs/C3- WeatherStation_Incomplete.ino",
+		"/C/Users/PCMan/Projects/CYDESP32E_4inch/docs/HARDWARE.md",
+		"/C/Users/PCMan/Projects/VPN-Network/Notes.txt",
+		"/C/Users/PCMan/Documents/Arduino/libraries/EspNowSimpleTyped/src/EspNowSimpleTyped.cpp",
+		"/C/Users/PCMan/Documents/Arduino/libraries/TFT_eSPI/User_Setup_Select.h",
+		"/C/Users/PCMan/Documents/Arduino/libraries/TFT_eSPI/User_Setups/4INS3.h",
+		"/C/Users/PCMan/Documents/Arduino/libraries/TFT_eSPI/TFT_eSPI_Setups/Setup000_4inHosyondwS3-Zero.h",
+		"/C/Users/PCMan/Documents/Arduino/libraries/TFT_eSPI/User_Setups/400_UserSetup.h",
+		"/C/Users/PCMan/Documents/Arduino/libraries/TFT_eSPI/User_Setups/Setup000_4inHosyondwS3-Zero.h",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/keywords.txt",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/05_TwoWay_SingleSketch/05_TwoWay_SingleSketch.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/04_Broadcast_RX/04_Broadcast_RX.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/03_Broadcast_TX/03_Broadcast_TX.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/02_OneWay_Unicast_RX/02_OneWay_Unicast_RX.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/01_OneWay_Unicast_TX/01_OneWay_Unicast_TX.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/examples/00_MacAddress_Finder/00_Mac_Address_Finder.ino",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/src/EspNowSimpleTyped.cpp",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/src/EspNowSimpleTyped.h",
+		"/C/Users/PCMan/Projects/LIBRARIES/EspNowSimpleTyped/library.properties",
+		"/C/Users/PCMan/Projects/ESP-NOW_Lesson3/C3WeatherStation-Example/src/main.cpp",
+		"/C/Users/PCMan/Projects/ESP-NOW_Lesson3/S3Display-rx-Example/platformio.ini",
+		"/C/Users/PCMan/Projects/ESP-NOW_Lesson3/S3Display-rx-Example/src/main.cpp",
+		"/C/Users/PCMan/Projects/ESP-NOW_Lesson3/C3WeatherStation-Example/platformio.ini",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/c3_weatherSensor_tx/platformio.ini",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/c3_weatherSensor_tx/src/main.cpp",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/c3_oled_rx/src/main.cpp",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/c3_oled_rx/platformio.ini",
+		"/C/Users/PCMan/AppData/Roaming/Sublime Text/Packages/User/Default.sublime-commands.json",
+		"/C/Users/PCMan/AppData/Roaming/Sublime Text/Packages/User/Default.sublime-commands",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/c3_oled_rx/temp.cpp",
+		"/C/Users/PCMan/Projects/ESP-NOW_testing/s3_weatherSensor_tx/src/main.cpp",
+		"/C/Users/PCMan/Projects/blink-test/src/main.cpp"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Terminus":
+	{
+		"height": 130.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "sublim-project.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 377.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}
