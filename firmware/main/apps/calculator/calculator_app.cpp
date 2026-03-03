@@ -21,6 +21,7 @@
 #include <vector>
 #include <cstring>
 #include <cstdio>
+#include <cctype>
 
 static const char* TAG = "CalcApp";
 
@@ -210,8 +211,10 @@ bool CalculatorApp::isStartZero()
     int len = strlen(text);
 
     if (len == 1 && text[0] == '0') return true;
+    // Check if trailing "0" is the start of a new number segment
+    // (i.e., the character before it is an operator, not a digit)
     if (text[len - 1] == '0' && len >= 2 &&
-        text[len - 2] > '9' && text[len - 2] < '0') return true;
+        (text[len - 2] > '9' || text[len - 2] < '0')) return true;
     return false;
 }
 
@@ -370,6 +373,7 @@ void CalculatorApp::keyboardEventCb(lv_event_t* e)
 
         // Operators: / x - + %
         case 1: case 2: case 7: case 11: case 15:
+            if (app->_formulaLen >= FORMULA_LEN_MAX) break;
             if (app->isStartPercent() || app->isStartNum()) {
                 // Special case: if starting with "0" and pressing +/-, replace the 0
                 if ((btnId == 7 || btnId == 11) && app->isStartZero()) {
@@ -384,6 +388,7 @@ void CalculatorApp::keyboardEventCb(lv_event_t* e)
         // Digits: 0-9
         case 4: case 5: case 6: case 8: case 9: case 10:
         case 12: case 13: case 14: case 16:
+            if (app->_formulaLen >= FORMULA_LEN_MAX) break;
             if (app->isStartZero()) {
                 lv_label_cut_text(app->_formulaLabel, --(app->_formulaLen), 1);
             }
@@ -395,6 +400,7 @@ void CalculatorApp::keyboardEventCb(lv_event_t* e)
             break;
 
         case 17:  // "." - Decimal point
+            if (app->_formulaLen >= FORMULA_LEN_MAX) break;
             if (app->isLegalDot() && app->isStartNum()) {
                 lv_label_ins_text(app->_formulaLabel, app->_formulaLen++, ".");
             }

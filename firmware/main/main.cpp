@@ -28,24 +28,6 @@
 
 static const char* TAG = "Main";
 
-/*
- * LVGL port configuration.
- * This tells esp_lvgl_port (used inside the BSP) how to run LVGL:
- * - task_priority: FreeRTOS priority (4 is moderate - not too high, not too low)
- * - task_stack: Stack size for the LVGL task (10KB is generous)
- * - task_affinity: -1 means "run on any CPU core" (P4 has dual cores)
- * - task_max_sleep_ms: Max time LVGL task sleeps between frames
- * - timer_period_ms: How often LVGL's internal timer ticks (5ms = 200Hz)
- */
-#define LVGL_PORT_INIT_CONFIG() \
-    {                               \
-        .task_priority = 4,         \
-        .task_stack = 10 * 1024,    \
-        .task_affinity = -1,        \
-        .task_max_sleep_ms = 500,   \
-        .timer_period_ms = 5,       \
-    }
-
 // Static instances - these live for the entire program lifetime
 static AppManager appManager;
 static HomeScreen homeScreen;
@@ -67,37 +49,38 @@ extern "C" void app_main(void)
     // STEP 1: Initialize the display hardware
     // ──────────────────────────────────────────────
     // The BSP handles ALL the low-level display setup:
-    // - MIPI-DSI bus configuration
+    // - MIPI-DSI bus configuration (lanes, clock, etc.)
     // - JD9365 display driver initialization
-    // - GT911 touch controller setup
+    // - GT911 touch controller setup via I2C
     // - LVGL display/input device registration
-    // - Double-buffered rendering in PSRAM
+    // - Frame buffer allocation in PSRAM
     ESP_LOGI(TAG, "Initializing display...");
 
+    /*
+     * bsp_display_cfg_t has these fields (from the Waveshare BSP headers):
+     *   .lv_adapter_cfg  - LVGL task settings (stack, priority, timing)
+     *   .rotation        - Software rotation (0, 90, 180, 270 degrees)
+     *   .tear_avoid_mode - Frame tearing prevention strategy
+     *   .touch_flags     - Touch coordinate transformations
+     *
+     * ESP_LV_ADAPTER_DEFAULT_CONFIG() fills in sensible defaults for the
+     * LVGL task (8KB stack, priority 6, 1ms tick, -1 core affinity).
+     *
+     * ESP_LV_ADAPTER_ROTATE_90 rotates the display 90 degrees clockwise,
+     * turning the native 1280x800 landscape into 800x1280 portrait.
+     *
+     * TRIPLE_PARTIAL uses 3 framebuffers for tear-free rendering on MIPI-DSI.
+     * This is the recommended mode for our display type.
+     */
     bsp_display_cfg_t cfg = {
-        .lvgl_port_cfg = LVGL_PORT_INIT_CONFIG(),
-        /*
-         * buffer_size: How many pixels in the render buffer.
-         * Full-screen buffer (800*1280 = 1,024,000 pixels) gives the smoothest
-         * rendering with no tearing artifacts. This uses ~4MB of PSRAM per buffer.
-         */
-        .buffer_size = BSP_LCD_H_RES * BSP_LCD_V_RES,
-        /*
-         * double_buffer: Use two buffers so LVGL can render to one while
-         * the other is being sent to the display. Eliminates flickering.
-         */
-        .double_buffer = true,
-        .hw_cfg = {
-            .dsi_bus = {
-                .phy_clk_src = MIPI_DSI_PHY_CLK_SRC_DEFAULT,
-                .lane_bit_rate_mbps = BSP_LCD_MIPI_DSI_LANE_BITRATE_MBPS,
-            }
+        .lv_adapter_cfg  = ESP_LV_ADAPTER_DEFAULT_CONFIG(),
+        .rotation        = ESP_LV_ADAPTER_ROTATE_90,
+        .tear_avoid_mode = ESP_LV_ADAPTER_TEAR_AVOID_MODE_TRIPLE_PARTIAL,
+        .touch_flags = {
+            .swap_xy  = 0,
+            .mirror_x = 0,
+            .mirror_y = 0,
         },
-        .flags = {
-            .buff_dma = false,       // DMA can't access PSRAM on P4
-            .buff_spiram = true,     // Buffers go in PSRAM (we have 32MB)
-            .sw_rotate = true,       // Rotate from native landscape to portrait
-        }
     };
 
     lv_display_t* disp = bsp_display_start_with_config(&cfg);
@@ -122,9 +105,16 @@ extern "C" void app_main(void)
      * objects from app_main() at the same time, we get crashes.
      * The lock is a mutex (mutual exclusion) - only one thread can hold it.
      *
-     * The parameter is a timeout in milliseconds. 0 = wait forever.
+     * The BSP's bsp_display_lock() wraps esp_lv_adapter_lock() which uses
+     * -1 for infinite wait (portMAX_DELAY). Since the BSP declares uint32_t,
+     * we pass UINT32_MAX which converts to -1 in the adapter's int32_t param.
+     * Using 0 would be a non-blocking try that could fail silently!
+     * We also check the return value - if we can't get the lock, don't proceed.
      */
-    bsp_display_lock(0);
+    if (bsp_display_lock(UINT32_MAX) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to acquire display lock!");
+        return;
+    }
 
     ESP_LOGI(TAG, "Registering apps...");
 
