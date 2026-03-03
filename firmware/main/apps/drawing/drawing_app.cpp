@@ -339,7 +339,7 @@ void DrawingApp::colorBtnCb(lv_event_t* e)
     DrawingApp* app = (DrawingApp*)lv_event_get_user_data(e);
     if (app == nullptr) return;
 
-    lv_obj_t* target = lv_event_get_target(e);
+    lv_obj_t* target = (lv_obj_t*)lv_event_get_target(e);
     int colorIdx = (int)(intptr_t)lv_obj_get_user_data(target);
 
     if (colorIdx >= 0 && colorIdx < (int)PALETTE_COUNT) {
@@ -353,7 +353,7 @@ void DrawingApp::sizeBtnCb(lv_event_t* e)
     DrawingApp* app = (DrawingApp*)lv_event_get_user_data(e);
     if (app == nullptr) return;
 
-    lv_obj_t* target = lv_event_get_target(e);
+    lv_obj_t* target = (lv_obj_t*)lv_event_get_target(e);
     int sizeIdx = (int)(intptr_t)lv_obj_get_user_data(target);
 
     if (sizeIdx >= 0 && sizeIdx < (int)BRUSH_SIZE_COUNT) {

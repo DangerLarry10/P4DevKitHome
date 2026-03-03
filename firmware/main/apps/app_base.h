@@ -28,7 +28,7 @@ public:
      * icon:        Pointer to an LVGL image descriptor (nullptr = no icon)
      */
     AppBase(const char* name, const char* description, const lv_image_dsc_t* icon = nullptr)
-        : _name(name), _description(description), _icon(icon), _screen(nullptr) {}
+        : _screen(nullptr), _name(name), _description(description), _icon(icon) {}
 
     // Virtual destructor - required because we delete apps through base class pointers.
     // Without this, the derived class's destructor wouldn't run = memory leak.

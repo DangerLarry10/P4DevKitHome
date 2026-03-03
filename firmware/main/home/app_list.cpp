@@ -142,7 +142,7 @@ void AppList::onAppClicked(lv_event_t* e)
     if (self == nullptr || self->_manager == nullptr) return;
 
     // Get the card that was clicked
-    lv_obj_t* target = lv_event_get_target(e);
+    lv_obj_t* target = (lv_obj_t*)lv_event_get_target(e);
 
     // Retrieve the app index stored on this card
     int appIndex = (int)(intptr_t)lv_obj_get_user_data(target);

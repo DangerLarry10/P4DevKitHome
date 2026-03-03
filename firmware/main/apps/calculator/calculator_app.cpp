@@ -104,7 +104,7 @@ bool CalculatorApp::onRun()
     // Operator buttons get accent color text
     // Button indices: 0=C, 1=/, 2=x, 3=backspace, 7=-, 11=+, 15=%
     lv_obj_set_style_text_color(_keyboard, THEME_CALC_OPERATOR,
-                                 LV_PART_ITEMS | LV_STATE_CHECKED);
+                                 (lv_style_selector_t)LV_PART_ITEMS | (lv_style_selector_t)LV_STATE_CHECKED);
     lv_btnmatrix_set_btn_ctrl(_keyboard, 0, LV_BTNMATRIX_CTRL_CHECKED);   // C
     lv_btnmatrix_set_btn_ctrl(_keyboard, 1, LV_BTNMATRIX_CTRL_CHECKED);   // /
     lv_btnmatrix_set_btn_ctrl(_keyboard, 2, LV_BTNMATRIX_CTRL_CHECKED);   // x
@@ -344,9 +344,9 @@ void CalculatorApp::keyboardEventCb(lv_event_t* e)
 
     // If we just pressed "=", the formula is small and result is big.
     // Any new input should make formula big and result small again.
-    if (lv_obj_get_style_text_font(app->_formulaLabel, 0) == THEME_FONT_BODY) {
-        lv_obj_set_style_text_font(app->_formulaLabel, THEME_FONT_CALC_RESULT, 0);
-        lv_obj_set_style_text_font(app->_resultLabel, THEME_FONT_BODY, 0);
+    if (lv_obj_get_style_text_font(app->_formulaLabel, LV_PART_MAIN) == THEME_FONT_BODY) {
+        lv_obj_set_style_text_font(app->_formulaLabel, THEME_FONT_CALC_RESULT, LV_PART_MAIN);
+        lv_obj_set_style_text_font(app->_resultLabel, THEME_FONT_BODY, LV_PART_MAIN);
     }
 
     switch (btnId) {

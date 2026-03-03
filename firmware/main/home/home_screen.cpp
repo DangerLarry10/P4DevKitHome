@@ -79,7 +79,7 @@ void HomeScreen::show()
  */
 void HomeScreen::clockTimerCb(lv_timer_t* timer)
 {
-    HomeScreen* home = (HomeScreen*)timer->user_data;
+    HomeScreen* home = (HomeScreen*)lv_timer_get_user_data(timer);
     if (home != nullptr) {
         home->_statusBar.updateClock();
     }

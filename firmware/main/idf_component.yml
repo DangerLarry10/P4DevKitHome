@@ -12,5 +12,7 @@ dependencies:
   waveshare/esp32_p4_platform: "^1.0.6"
 
   ## LVGL v9 - the GUI library
-  ## The ~9.2 means "any 9.2.x version" (compatible updates only).
-  lvgl/lvgl: "~9.2"
+  ## The ^9.2 means "any 9.x version >= 9.2" (allows minor version upgrades).
+  ## We need >= 9.3 because the esp_lvgl_adapter uses newer LVGL APIs
+  ## (like lv_draw_sw_custom_blend_handler_t) that were added after 9.2.
+  lvgl/lvgl: "^9.2"
