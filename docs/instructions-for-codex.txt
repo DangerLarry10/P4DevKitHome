@@ -1,0 +1,12 @@
+ check out all the markdown files in the root project folder and within docs
+  and within CODEX to get yourself caught up. then check out the repo as well
+  inside of the root that will be notes for claude code to use to fix the code.
+  Be sure to look for anything that could cause errors and especially with the
+  very specific hardware that i have. watch for probems that might arise due to
+  problems with versions and really anything. role play like  you are a
+  professional code writer for embedded systems, especially with the esp-idf.
+  The goal is to make a home screen type app with a few overlays for
+  controlling different apps that i will later add. there are a few apps
+  included in the current working code. Our code is in firmware. The project we
+  are basing the home screen on is the repo cloned inside the directory /docs/
+  esp-brookesia_example
