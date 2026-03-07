@@ -1,6 +1,6 @@
 # P4DevKitHome - Project Status
 
-**Last Updated: 2026-03-06**
+**Last Updated: 2026-03-07**
 
 ## Current State: Running on Hardware
 
@@ -80,11 +80,39 @@ main.cpp
 3. Add source files to `firmware/main/CMakeLists.txt` SRCS list
 4. Add `#include` and `registerApp()` call in `main.cpp`
 
+## Next Major Feature: Security Map App (MQTT)
+
+**Goal:** Display a floor plan PNG with colored overlays showing motion/distance sensor status.
+
+**Architecture decisions made:**
+- P4 renders its own map locally (not streamed from PC/Pi)
+- Subscribes to zigbee2mqtt MQTT topics directly
+- Read-only dashboard (no device control yet)
+- 3-5 motion/distance sensors to start
+
+**Network stack needed:**
+- WiFi via ESP32-C6 coprocessor: add `esp_wifi_remote` + `esp_hosted` to `idf_component.yml`
+- MQTT client: already compiled in (CONFIG_MQTT_PROTOCOL_311=y in sdkconfig)
+- C6 connects to P4 via SDIO (pins GPIO39-44) — shares pins with TF card slot
+
+**Home Assistant / MQTT broker:**
+- HAOS on repurposed laptop at 192.168.1.103:8123
+- MQTT broker on same host (default Mosquitto port 1883)
+- Topic structure: `zigbee2mqtt/<device_name>` with JSON payloads
+
+**Prerequisite from user:** Floor plan PNG image (to be created)
+
+**Implementation approach:**
+1. Add WiFi components and get network connectivity working first
+2. Build MQTT service layer (connect, subscribe, parse JSON payloads)
+3. Build the map app: embed PNG in flash, overlay LVGL indicator objects at sensor positions
+4. Sensor positions hardcoded initially (can add config screen later)
+
 ## What's NOT Implemented Yet
 
-- WiFi connectivity / ESP32-C6 integration
+- WiFi connectivity / ESP32-C6 integration (next step for map app)
 - Gesture navigation (swipe to go back)
 - App settings/preferences persistence
 - Actual app icons (using colored circles with initials)
-- NTP time sync
+- NTP time sync (will come free with WiFi)
 - Overlay manager (for quick controls, slide-over panels)
