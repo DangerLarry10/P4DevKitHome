@@ -1,0 +1,224 @@
+Activating ESP-IDF 5.5
+Setting IDF_PATH to 'C:\Espressif\frameworks\esp-idf-v5.5.1'.
+* Checking python version ... 3.11.2
+* Checking python dependencies ... OK
+* Deactivating the current ESP-IDF environment (if any) ... OK
+* Establishing a new ESP-IDF environment ... OK
+* Identifying shell ... cmd.exe
+* Detecting outdated tools in system ... OK - no outdated tools found
+
+Done! You can now compile ESP-IDF projects.
+Go to the project directory and run:
+
+  idf.py build
+
+Executing action: flash
+Running ninja in directory C:\Users\PCMan\Projects\P4DevKitHome\firmware\build
+Executing "ninja flash"...
+[1/5] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\PCMan\Projects\P4DevKitHome\firmware\build\esp-idf\esptool_py && C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Users/PCMan/Projects/P4DevKitHome/firmware/build/partition_table/partition-table.bin C:/Users/PCMan/Projects/P4DevKitHome/firmware/build/p4devkithome.bin"
+p4devkithome.bin binary size 0xdef10 bytes. Smallest app partition is 0xe00000 bytes. 0xd210f0 bytes (94%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\PCMan\Projects\P4DevKitHome\firmware\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 C:/Users/PCMan/Projects/P4DevKitHome/firmware/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5c20 bytes. 0x3e0 bytes (4%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\esp-idf-v5.5.1\components\esptool_py && C:\Espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Espressif/frameworks/esp-idf-v5.5.1 -D SERIAL_TOOL=C:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;;C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py/esptool/esptool.py;--chip;esp32p4 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Users/PCMan/Projects/P4DevKitHome/firmware/build -P C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32p4 -p COM20 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 16MB 0x2000 bootloader/bootloader.bin 0x10000 p4devkithome.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.12.dev1
+Serial port COM20
+Connecting....
+Chip is ESP32-P4 (revision v1.3)
+Features: High-Performance MCU
+Crystal is 40MHz
+MAC: 30:ed:a0:ea:4a:c4
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00002000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000eefff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 23584 bytes to 14453...
+Writing at 0x00002000... (100 %)
+Wrote 23584 bytes (14453 compressed) at 0x00002000 in 0.6 seconds (effective 295.8 kbit/s)...
+Hash of data verified.
+Compressed 913168 bytes to 525855...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001d1c7... (6 %)
+Writing at 0x00026c33... (9 %)
+Writing at 0x0002f095... (12 %)
+Writing at 0x00038ea1... (15 %)
+Writing at 0x00043c0e... (18 %)
+Writing at 0x0004ad5b... (21 %)
+Writing at 0x00050d90... (24 %)
+Writing at 0x00056d92... (27 %)
+Writing at 0x0005d7f9... (30 %)
+Writing at 0x000636a3... (33 %)
+Writing at 0x00069e3c... (36 %)
+Writing at 0x0006fdf7... (39 %)
+Writing at 0x00075a85... (42 %)
+Writing at 0x0007ad15... (45 %)
+Writing at 0x000801bf... (48 %)
+Writing at 0x00085f30... (51 %)
+Writing at 0x0008d070... (54 %)
+Writing at 0x000926e6... (57 %)
+Writing at 0x000985ae... (60 %)
+Writing at 0x0009ddfd... (63 %)
+Writing at 0x000a43c6... (66 %)
+Writing at 0x000aa12c... (69 %)
+Writing at 0x000b0316... (72 %)
+Writing at 0x000b6616... (75 %)
+Writing at 0x000bcf1b... (78 %)
+Writing at 0x000c3f92... (81 %)
+Writing at 0x000ca0d5... (84 %)
+Writing at 0x000d2165... (87 %)
+Writing at 0x000d91d6... (90 %)
+Writing at 0x000dfd63... (93 %)
+Writing at 0x000e6260... (96 %)
+Writing at 0x000ededb... (100 %)
+Wrote 913168 bytes (525855 compressed) at 0x00010000 in 12.3 seconds (effective 593.1 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.1 seconds (effective 487.7 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+--- Warning: GDB cannot open serial ports accessed as COMx
+--- Using \\.\COM20 instead...
+--- esp-idf-monitor 1.9.0 on \\.\COM20 115200
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+Executing action: monitor
+Running idf_monitor in directory C:\Users\PCMan\Projects\P4DevKitHome\firmware
+Executing "C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM20 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32p4 --revision 1 --decode-panic backtrace C:\Users\PCMan\Projects\P4DevKitHome\firmware\build\p4devkithome.elf C:\Users\PCMan\Projects\P4DevKitHome\firmware\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM20'"...
+ESP-ROM:esp32p4-eco2-20240710
+BESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x17a4
+load:0x4ff29ed0,len:0xfc0
+--- 0x4ff29ed0: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_bootloader_format/esp_bootloader_desc.c:39
+load:0x4ff2cbd0,len:0x345c
+--- 0x4ff2cbd0: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader_support/src/flash_encrypt.c:89
+entry 0x4ff29eda
+--- 0x4ff29eda: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/subproject/main/bootloader_start.c:25
+I (25) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader
+I (26) boot: compile time Mar  2 2026 20:56:34
+I (26) boot: Multicore bootloader
+I (28) boot: chip revision: v1.3
+I (29) boot: efuse block revision: v0.3
+I (33) qio_mode: Enabling default flash chip QIO
+I (37) boot.esp32p4: SPI Speed      : 80MHz
+I (41) boot.esp32p4: SPI Mode       : QIO
+I (45) boot.esp32p4: SPI Flash Size : 16MB
+I (49) boot: Enabling RNG early entropy source...
+I (53) boot: Partition Table:
+I (56) boot: ## Label            Usage          Type ST Offset   Length
+I (62) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (68) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (75) boot:  2 factory          factory app      00 00 00010000 00e00000
+I (83) boot: End of partition table
+I (85) esp_image: segment 0: paddr=00010020 vaddr=480a0020 size=36da8h (224680) map
+I (128) esp_image: segment 1: paddr=00046dd0 vaddr=30100000 size=00068h (   104) load
+I (130) esp_image: segment 2: paddr=00046e40 vaddr=4ff00000 size=091d8h ( 37336) load
+I (140) esp_image: segment 3: paddr=00050020 vaddr=48000020 size=906e0h (591584) map
+I (232) esp_image: segment 4: paddr=000e0708 vaddr=4ff091d8 size=0b05ch ( 45148) load
+I (242) esp_image: segment 5: paddr=000eb76c vaddr=4ff14280 size=03778h ( 14200) load
+I (250) boot: Loaded app from partition at offset 0x10000
+I (250) boot: Disabling RNG early entropy source...
+I (263) hex_psram: vendor id    : 0x0d (AP)
+I (263) hex_psram: Latency      : 0x01 (Fixed)
+I (263) hex_psram: DriveStr.    : 0x00 (25 Ohm)
+I (264) hex_psram: dev id       : 0x03 (generation 4)
+I (268) hex_psram: density      : 0x07 (256 Mbit)
+I (273) hex_psram: good-die     : 0x06 (Pass)
+I (277) hex_psram: SRF          : 0x02 (Slow Refresh)
+I (282) hex_psram: BurstType    : 0x00 ( Wrap)
+I (286) hex_psram: BurstLen     : 0x03 (2048 Byte)
+I (290) hex_psram: BitMode      : 0x01 (X16 Mode)
+I (295) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)
+I (300) hex_psram: DriveStrength: 0x00 (1/1)
+I (304) MSPI DQS: tuning success, best phase id is 0
+I (476) MSPI DQS: tuning success, best delayline id is 17
+I esp_psram: Found 32MB PSRAM device
+I esp_psram: Speed: 200MHz
+I (489) mmu_psram: .rodata xip on psram
+I (520) mmu_psram: .text xip on psram
+I (521) hex_psram: psram CS IO is dedicated
+I (521) cpu_start: Multicore app
+I (968) esp_psram: SPI SRAM memory test OK
+I (977) cpu_start: Pro cpu start user code
+I (977) cpu_start: cpu freq: 360000000 Hz
+I (977) app_init: Application information:
+I (977) app_init: Project name:     p4devkithome
+I (981) app_init: App version:      b56559d-dirty
+I (986) app_init: Compile time:     Mar  6 2026 22:07:37
+I (991) app_init: ELF file SHA256:  c72bf3be2...
+I (995) app_init: ESP-IDF:          v5.5.1-dirty
+I (999) efuse_init: Min chip rev:     v0.1
+I (1003) efuse_init: Max chip rev:     v1.99 
+I (1007) efuse_init: Chip rev:         v1.3
+I (1011) heap_init: Initializing. RAM available for dynamic allocation:
+I (1018) heap_init: At 4FF19990 len 00021630 (133 KiB): RAM
+I (1023) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM
+I (1028) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM
+I (1034) heap_init: At 50108080 len 00007F80 (31 KiB): RTCRAM
+I (1039) heap_init: At 30100068 len 00001F98 (7 KiB): TCM
+I (1044) esp_psram: Adding pool of 31872K of PSRAM memory to heap allocator
+I (1051) esp_psram: Adding pool of 62K of PSRAM memory gap generated due to end address alignment of irom to the heap allocator
+I (1062) esp_psram: Adding pool of 36K of PSRAM memory gap generated due to end address alignment of drom to the heap allocator
+I (1073) spi_flash: detected chip: gd
+I (1076) spi_flash: flash io: qio
+I (1080) main_task: Started on CPU0
+I (1095) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1095) main_task: Calling app_main()
+I (1095) Main: === P4DevKitHome Starting ===
+I (1099) Main: Custom home screen for Waveshare ESP32-P4 DevKit
+I (1105) Main: Initializing display...
+I (1108) esp_lvgl:adapter: LVGL adapter initialized successfully
+W (1114) i2c.master: Please check pull-up resistances whether be connected properly. Otherwise unexpected behavior would happen. For more detailed information, please read docs
+I (1130) ESP32_P4_PLATFORM: MIPI DSI PHY Powered on
+I (1135) ESP32_P4_PLATFORM: Install MIPI DSI LCD control panel
+I (1140) ESP32_P4_PLATFORM: Install Waveshare LCD control panel
+I (1145) jd9365: version: 1.0.6
+I (1148) i2c_bus: I2C Bus V2 uses the externally initialized bus handle
+I (2408) jd9365: LCD ID: 93 65 04
+I (2550) ESP32_P4_PLATFORM: Display initialized
+I (2551) esp_lvgl:bridge_v9: Initializing hardware resources
+I (2551) esp_lvgl:bridge_v9: Hardware resources initialized successfully
+I (2555) ESP32_P4_PLATFORM: Touch 0x5d found
+I (2559) GT911: I2C address initialization procedure skipped - using default GT9xx setup
+I (2567) GT911: TouchPad_ID:0x39,0x32,0x37
+I (2570) GT911: TouchPad_Config_Version:130
+I (2574) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: disabled)
+I (2582) esp_lvgl:bridge: Initializing hardware resources
+I (2587) esp_lvgl:bridge: Hardware resources initialized successfully
+I (2593) esp_lvgl:adapter: LVGL task started successfully
+I (2599) Main: Display initialized: 800x1280
+I (2605) Main: Registering apps...
+I (2605) AppManager: Registered app: Calculator (1 total)
+I (2611) AppManager: Registered app: Drawing (2 total)
+I (2615) Main: Creating home screen...
+I (2619) HomeScreen: Creating home screen
+I (2625) AppList: Added app to list: Calculator
+I (2628) AppList: Added app to list: Drawing
+I (2631) HomeScreen: Clock timer started (30s interval)
+I (2636) Main: === P4DevKitHome Ready ===
+I (2640) Main: Registered 2 apps
+I (2644) main_task: Returned from app_main()
+I (32039) AppList: App tapped at index 0
+I (32039) AppManager: Launching app: Calculator
+I (32039) CalcApp: Starting calculator
+I (35803) AppManager: Closing app: Calculator
+I (35803) CalcApp: Closing calculator
+I (36661) AppList: App tapped at index 1
+I (36661) AppManager: Launching app: Drawing
+I (36661) DrawApp: Starting drawing app
+I (36692) DrawApp: Canvas buffer: 800x1176 = 3763200 bytes (PSRAM)
+I (44999) AppManager: Closing app: Drawing
+I (44999) DrawApp: Closing drawing app

@@ -66,15 +66,17 @@ extern "C" void app_main(void)
      * ESP_LV_ADAPTER_DEFAULT_CONFIG() fills in sensible defaults for the
      * LVGL task (8KB stack, priority 6, 1ms tick, -1 core affinity).
      *
-     * ESP_LV_ADAPTER_ROTATE_90 rotates the display 90 degrees clockwise,
-     * turning the native 1280x800 landscape into 800x1280 portrait.
+     * No rotation needed: the Waveshare BSP for our 10.1" panel already
+     * defines BSP_LCD_H_RES=800 and BSP_LCD_V_RES=1280 (portrait).
+     * Using ESP_LV_ADAPTER_ROTATE_90 here would double-rotate AND trigger
+     * a known PPA freeze bug on ESP32-P4 (TRIPLE_PARTIAL + rotation).
      *
      * TRIPLE_PARTIAL uses 3 framebuffers for tear-free rendering on MIPI-DSI.
      * This is the recommended mode for our display type.
      */
     bsp_display_cfg_t cfg = {
         .lv_adapter_cfg  = ESP_LV_ADAPTER_DEFAULT_CONFIG(),
-        .rotation        = ESP_LV_ADAPTER_ROTATE_90,
+        .rotation        = ESP_LV_ADAPTER_ROTATE_0,
         .tear_avoid_mode = ESP_LV_ADAPTER_TEAR_AVOID_MODE_TRIPLE_PARTIAL,
         .touch_flags = {
             .swap_xy  = 0,

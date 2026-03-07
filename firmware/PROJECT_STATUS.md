@@ -1,10 +1,19 @@
 # P4DevKitHome - Project Status
 
-**Last Updated: 2026-03-02**
+**Last Updated: 2026-03-06**
 
-## Current State: Initial Implementation Complete (Untested)
+## Current State: Running on Hardware
 
-All source files have been created. The project needs to be built and tested on hardware.
+First successful flash and boot on 2026-03-06. Home screen, status bar, and both apps functional.
+
+## What's Working
+
+- Home screen with scrollable app list (two cards: Calculator, Drawing)
+- Status bar with clock (top-left) and WiFi/battery icons (top-right)
+- Calculator app launches and works (UI elements are small — needs sizing tuning)
+- Drawing app launches and works (refresh rate is slow — canvas optimization needed)
+- Back button returns to home screen from both apps
+- Touch input is aligned correctly (no coordinate mapping issues)
 
 ## What's Done
 
@@ -22,30 +31,36 @@ All source files have been created. The project needs to be built and tested on 
   - `CalculatorApp` - adapted from esp-brookesia calculator
   - `DrawingApp` - custom finger-painting canvas with color/size palette
 
+## Key Fix Applied
+
+- **Removed software rotation** (`ESP_LV_ADAPTER_ROTATE_90` → `ESP_LV_ADAPTER_ROTATE_0`).
+  The BSP already defines the 10.1" panel as 800x1280 (portrait). The rotation was
+  unnecessary and triggered a known PPA freeze bug on ESP32-P4 with TRIPLE_PARTIAL mode.
+
 ## Build & Flash Instructions
 
 ```bash
 cd firmware
-idf.py set-target esp32p4    # Only needed once
-idf.py build                 # Compile everything
-idf.py -p COMx flash monitor # Flash and watch serial output
+idf.py set-target esp32p4      # Only needed once
+idf.py build                   # Compile everything
+idf.py -p COM20 flash monitor  # Flash and watch serial output
 ```
 
 **Note:** Connect via the Type-C **UART** port (not the USB-OTG port).
 
-## Known Issues / Potential Problems
+## Known Issues
 
-1. **BSP package name**: Updated to `waveshare/esp32_p4_platform` to match the existing Waveshare P4 reference product in `docs/esp-brookesia_example`. This still needs a real hardware build to confirm there are no BSP API differences in the custom firmware.
-2. **Display rotation**: Using `sw_rotate = true` to get portrait mode. If display appears rotated wrong, try toggling this.
-3. **Canvas memory**: Drawing app allocates ~3.7MB in PSRAM for the canvas buffer. Should be fine with 32MB PSRAM but watch for allocation failures.
-4. **Clock**: Shows 00:00 on boot since there's no NTP (no WiFi yet). Will show uptime-based time.
+1. **Calculator UI too small**: Button and text sizing needs to be scaled up for the 10.1" display.
+2. **Drawing app slow refresh**: Canvas uses ARGB8888 (4 bytes/pixel, ~3.7MB) and opens/closes a draw layer per dot. Should switch to RGB565 and batch draw operations.
+3. **Clock shows 00:00**: No NTP (no WiFi yet). Shows epoch time on boot.
+4. **Hardcoded screen dimensions**: `theme.h` uses `SCREEN_WIDTH=800` / `SCREEN_HEIGHT=1280` constants instead of querying the display at runtime.
 
 ## Architecture Overview
 
 ```
 main.cpp
   └── app_main()
-       ├── BSP init (display + touch)
+       ├── BSP init (display + touch, no rotation)
        ├── AppManager
        │    ├── registerApp(Calculator)
        │    └── registerApp(Drawing)
@@ -72,3 +87,4 @@ main.cpp
 - App settings/preferences persistence
 - Actual app icons (using colored circles with initials)
 - NTP time sync
+- Overlay manager (for quick controls, slide-over panels)
